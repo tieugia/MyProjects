@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Webcam</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="background" id="background"></div>
+    <div id="container">
+        <video autoplay="true" id="video">
+        </video>
+    </div>
+    <div class="containerr">
+        <button id='btn' type="button" class="btn btn-primary">Take photos</button>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="output">
+        <img id="photo" alt="The screen capture will appear in this box."> 
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

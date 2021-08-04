@@ -1,0 +1,150 @@
+{
+  "api": {
+    "conn_id": "export_send_attachment_api",
+    "endpoint": {
+      "ExportFileGetInfoSerial": "ExportFileGetInfoSerial",
+      "SendAttachment": "SendAttachment"
+    },
+    "export": {
+      "OperationName": "ExportFileGetInfoSerial",
+      "RequestData": {
+        "DayFromDate": 1000,
+        "DayToDate": 0,
+        "AgentIDs": [
+          66,
+          95,
+          86,
+          50282
+        ],
+        "Providers": [
+          {
+            "ProviderName": "Viettel",
+            "ServiceIDs": [
+              3,
+              20,
+              21,
+              25,
+              27,
+              28,
+              29,
+              36,
+              42,
+              43,
+              44,
+              45,
+              46,
+              48,
+              49,
+              50,
+              60,
+              61,
+              62,
+              10061,
+              20106,
+              20143,
+              20192,
+              20193
+            ]
+          },
+          {
+            "ProviderName": "Mobifone",
+            "ServiceIDs": [
+              1,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              24,
+              30,
+              35,
+              40,
+              20084,
+              20142
+            ]
+          },
+          {
+            "ProviderName": "Vietnamobile",
+            "ServiceIDs": [
+              4,
+              10062,
+              20105,
+              20108,
+              20140,
+              20145,
+              20154,
+              20189
+            ]
+          },
+          {
+            "ProviderName": "GMOBILE",
+            "ServiceIDs": [
+              5,
+              10063,
+              10064,
+              10065,
+              10066,
+              20093
+            ]
+          },
+          {
+            "ProviderName": "Vina",
+            "ServiceIDs": [
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          {
+            "ProviderName": "Garena",
+            "ServiceIDs": [
+              20074,
+              20075,
+              20094,
+              20095,
+              20096
+            ]
+          },
+          {
+            "ProviderName": "FPT Gate",
+            "ServiceIDs": [
+              22,
+              23,
+              20067,
+              20068,
+              20069,
+              20070,
+              20071,
+              20072,
+              20073,
+              20188
+            ]
+          }
+        ]
+      }
+    },
+    "send": {
+      "OperationName": "SendAttachment",
+      "RequestData": {
+        "From": "ttt@gmail.com",
+        "FromPassword": "jhgjhghj",
+        "To": "hkjhjkh@gmail.com",
+        "Host": "smtp.gmail.com",
+        "Port": 587,
+        "Subject": "History_Transaction_Momo"
+      }
+    }
+  },
+  "noti": {
+    "slack_http_id": "slack_webhook_sandbox"
+  },
+  "header": {
+    "Username": "Web",
+    "Credential": "a078e8dfc16031b8df6392c048e79b59",
+    "Content-Type": "application/json"
+  },
+  "interval": "* * * * *"
+}
