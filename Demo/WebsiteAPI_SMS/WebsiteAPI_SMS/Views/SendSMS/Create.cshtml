@@ -323,19 +323,19 @@
                                 <form id="stripe-login">
                                     <div class="field padding-bottom--24">
                                         @Html.LabelFor(model => model.token, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.token, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.token, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                     </div>
                                     <div class="field padding-bottom--24">
                                         @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                     </div>
                                     <div class="field padding-bottom--24">
                                         @Html.LabelFor(model => model.content, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                     </div>
                                     <div class="field padding-bottom--24">
                                         @Html.LabelFor(model => model.thuonghieu, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.thuonghieu, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.thuonghieu, new { htmlAttributes = new { @class = "form-control", required= "required" } })
                                     </div>
                                     <p>@Html.DisplayTextFor(a => a.Status) </p>
                                     <div class="field padding-bottom--24">
