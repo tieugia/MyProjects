@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj": {}
+    "D:\\MyProjects\\New\\Demo\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj": {
+    "D:\\MyProjects\\New\\Demo\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj",
+        "projectUniqueName": "D:\\MyProjects\\New\\Demo\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj",
         "projectName": "TestFengshuiNumber",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj",
+        "projectPath": "D:\\MyProjects\\New\\Demo\\TestFengshuiNumber\\TestFengshuiNumber\\TestFengshuiNumber.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\TestFengshuiNumber\\TestFengshuiNumber\\obj\\",
+        "outputPath": "D:\\MyProjects\\New\\Demo\\TestFengshuiNumber\\TestFengshuiNumber\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
