@@ -2,7 +2,6 @@ create database Fengshui
 USE [Fengshui]
 GO
 
-/****** Object:  Table [dbo].[phoneNumber]    Script Date: 18/08/2021 9:50:42 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,6 +18,26 @@ insert into [dbo].[phoneNumber] values ('0968322658')--58=>taboo
 insert into [dbo].[phoneNumber] values ('0937573099')--Not match
 insert into [dbo].[phoneNumber] values ('0967245937')--Not match
 insert into [dbo].[phoneNumber] values ('0867392819')--Match
+
+--CREATE FUNCTION
+CREATE FUNCTION dbo.udf_SumOfDigits (@DigitString varchar(50))
+RETURNS int
+AS
+BEGIN
+ DECLARE @SumOfDigits int = 0;
+ WITH
+  T4 AS (SELECT 0 x UNION ALL SELECT 0 UNION ALL SELECT 0 UNION ALL SELECT 0),
+  Numbers AS (SELECT ROW_NUMBER() OVER(ORDER BY a.x) AS Num FROM T4 a CROSS JOIN T4 b CROSS JOIN T4 c)
+ SELECT @SumOfDigits =
+  SUM(CASE WHEN SUBSTRING(@DigitString, Num, 1) LIKE '[0-9]'
+   THEN CAST(SUBSTRING(@DigitString, Num, 1) AS int)
+   ELSE 0 END)
+ FROM Numbers
+ WHERE Numbers.Num <= LEN(@DigitString);
+
+ RETURN (@SumOfDigits);
+END
+GO
 
 --Create Stored Procedure
 create procedure [dbo].[usplistFengshuinumber]
