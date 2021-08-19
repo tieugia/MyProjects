@@ -23,6 +23,27 @@ namespace Library.Controllers
         {
             return View(_context.Diary.Include(p => p.Book).ToList());
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult CreateNew(Book book, int amountt)
+        {
+            int uid = int.Parse(HttpContext.Session.GetString("userId"));
+            var diary = new Diary();
+            book.BookId = null;
+            _context.Book.Add(book);
+            _context.SaveChanges();
+            diary.BookId = (int)book.BookId;
+            diary.Amount = amountt;
+            diary.BorrowDate = DateTime.Now;
+            diary.ExpiredDate = DateTime.Now.AddDays(5);
+            diary.UserID = uid;
+            diary.DiaryId = null;
+            _context.Diary.Add(diary);
+            _context.SaveChanges();
+            return RedirectToAction("Create", "Diaries");
+        }
         public ActionResult Borrow(int[] id, int[] amount)
         {
             int uid = int.Parse(HttpContext.Session.GetString("userId"));
