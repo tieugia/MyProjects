@@ -1,0 +1,45 @@
+﻿@model WebApp.Models.Result
+<form method="post">
+    <div>
+        <label>Date</label>
+        <input readonly type="date" name="date" value="@Model.Date.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label>Province</label>
+        <span>@Model.ProvinceName</span>
+        @*<select name="provinceId">
+            @foreach (WebApp.Models.Province item in ViewBag.provinces)
+            {
+                if (item.Id == Model.Id)
+                {
+                    <option selected value="@item.Id">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>*@
+    </div>
+    <!--Ajax or C#-->
+    <div id="sheet">
+        @Html.Raw(ViewBag.pattern)
+    </div>
+    <div>
+        <button>Save Changes</button>
+    </div>
+</form>
+<script>
+    //Cach 2 dung Javascript
+    //$('select[name="provinceId"]').val(@Model.ProvinceId);
+    $.get(`/result/getnumbers/${@Model.Id}`, (d) => {
+        //console.log(d);
+        $('input[name="num"').val((i) => {
+            return d[i]['value'];
+        });
+        $('input[name="prizeId"').val((i) => {
+            return d[i]['id'];
+        });
+    });
+</script>

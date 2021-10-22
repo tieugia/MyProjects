@@ -1,0 +1,11 @@
+﻿@model WebApp.Models.Category
+@TempData["msg"]
+<form method="post">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" value="@Model.Name" />
+    </div>
+    <div>
+        <button>Save changes</button>
+    </div>
+</form>

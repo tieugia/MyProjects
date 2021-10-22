@@ -1,0 +1,41 @@
+﻿@model WebApp.Models.Result
+<h5>Moi cap nhat</h5>
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">@Model.Date - @Model.ProvinceId</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            @foreach (WebApp.Models.Prize item in ViewBag.prizes)
+            {
+                if (item.Numbers.Count > 4)
+                {
+                    int mid = (int)Math.Ceiling(item.Numbers.Count / 2.0);
+                    <tr>
+                        <td rowspan="2">@item.Name</td>
+                        @for (int i = 0; i < mid; i++)
+                        {
+                            <th class="text-center" colspan="@(12/mid)">@item.Numbers[i].Value</th>
+                        }
+                    </tr>
+                    <tr>
+                        @for (int i = mid; i < item.Numbers.Count; i++)
+                        {
+                            <th class="text-center" colspan="@(12/(item.Numbers.Count - mid))">@item.Numbers[i].Value</th>
+                        }
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        @foreach (WebApp.Models.Number num in item.Numbers)
+                        {
+                            <th class="text-center" colspan="@(12/item.Numbers.Count)">@num.Value</th>
+                        }
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

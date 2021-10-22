@@ -1,0 +1,22 @@
+﻿@model WebApp.Models.Result
+<a href="/result">Back</a>
+<a href="/result/edit/@Model.Id">
+    <i class="fas fa-edit"></i>
+</a>
+<h1>@Model.Date.ToString("dd/MM/yyyy") - @Model.ProvinceName</h1>
+@*@ViewBag.pattern
+    @string.Join(',', ViewBag.numbers)*@
+@Html.Raw(string.Format(ViewBag.pattern, ViewBag.numbers))
+<table class="table table-bordered tbl">
+    <tbody>
+        <tr><th>Giải ĐB</th><td colspan="12">{0}</td></tr>
+    </tbody>
+    <tbody>          <tr class="bg"><th>Giải nhất</th><td colspan="12">{1}</td></tr>      </tbody>
+    <tbody>          <tr><th>Giải nhì</th><td colspan="12">{2}</td></tr>      </tbody>
+    <tbody>          <tr class="bg">              <th>Giải ba</th>              <td colspan="6">{3}</td>              <td colspan="6">{4}</td>          </tr>      </tbody>
+    <tbody>          <tr class="no-border-bottom">              <th rowspan="2">Giải tư</th>              <td colspan="3">{5}</td>              <td colspan="3">{6}</td>              <td colspan="3">{7}</td>              <td colspan="3">{8}</td>          </tr>          <tr class="no-border-top">              <td colspan="4">{9}</td>              <td colspan="4">{10}</td>              <td colspan="4">{11}</td>          </tr>      </tbody>
+    <tbody>          <tr class="bg"><th>Giải năm</th><td colspan="12">{12}</td></tr>      </tbody>
+    <tbody>          <tr>              <th>Giải sáu</th>              <td colspan="4">{13}</td>              <td colspan="4">{14}</td>              <td colspan="4">{15}</td>          </tr>      </tbody>
+    <tbody>          <tr class="bg"><th>Giải bảy</th><td colspan="12">{16}</td></tr>      </tbody>
+    <tbody>          <tr><th>Giải tám</th><td colspan="12">{17}</td></tr>      </tbody>
+</table>
