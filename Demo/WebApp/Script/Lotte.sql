@@ -131,7 +131,7 @@ create table Result(
 )
 go
 create proc AddResult(
-	@id int out,
+	@id int out,.
 	@date date,
 	@provinceId smallint
 )

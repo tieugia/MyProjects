@@ -11,7 +11,7 @@ namespace WebApp.Models
     public class NumberRepository : Repository
     {
         public NumberRepository(IConfiguration configuration) : base(configuration) { }
-        static void Set(IDbCommand command, Parameter parameter)
+        /*static void Set(IDbCommand command, Parameter parameter)
         {
             IDataParameter dataParameter = command.CreateParameter();
             dataParameter.Value = parameter.Value;
@@ -24,7 +24,7 @@ namespace WebApp.Models
             {
                 Set(command, parameter);
             }
-        }
+        }*/
         public int Add(List<Number> list)
         {
             using (IDbConnection connection = new SqlConnection(connectionString))

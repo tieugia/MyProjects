@@ -24,7 +24,9 @@ namespace WebApp.Models
             IDataParameter parameter = command.CreateParameter();
             parameter.Value = obj.Value;
             parameter.ParameterName = obj.Name;
-            //Thieu
+            parameter.DbType = obj.DbType;
+            parameter.Direction = obj.Direction;
+            obj.DataParameter = parameter;
             command.Parameters.Add(parameter);
         }
         protected void Set(IDbCommand command, Parameter[] parameters)
