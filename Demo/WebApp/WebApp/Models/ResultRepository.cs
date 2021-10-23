@@ -11,7 +11,7 @@ namespace WebApp.Models
     public class ResultRepository: Repository
     {
         //fields
-        IDbConnection connection;
+        //IDbConnection connection;
         public ResultRepository(IDbConnection connection) : base(connection) { }
 
         public int Add(Result obj)
@@ -19,7 +19,7 @@ namespace WebApp.Models
             Parameter[] parameters =
             {
                 new Parameter{Name="@id", DbType=DbType.Int32, Direction=ParameterDirection.Output},
-                new Parameter{Name="@Date", Value=obj.Date},
+                new Parameter{Name="@Date",DbType=DbType.DateTime, Value=obj.Date},
                 new Parameter{Name="@provinceId", Value=obj.ProvinceId}
             };
             int ret = Save("AddResult", parameters, CommandType.StoredProcedure);

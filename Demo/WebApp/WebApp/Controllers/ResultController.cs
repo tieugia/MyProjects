@@ -18,6 +18,18 @@ namespace WebApp.Controllers
         {
             this.provider = provider;
         }
+        public IActionResult Update(int id)
+        {
+            Result obj = provider.Result.GetResult(id);
+            ViewBag.pattern = provider.Pattern.GetShow(obj.ProvinceId);
+            ViewBag.numbers = provider.Number.GetNumbers(id);
+            return View(obj);
+        }
+        [HttpPost]
+        public IActionResult Update(int id, string[] numberId, string[] value)
+        {
+            return Edit(id, numberId, value);
+        }
         //SiteProvider provider;
         //public ResultController(IConfiguration configuration)
         //{
