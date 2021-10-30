@@ -10,7 +10,8 @@ namespace WebApp.Models
 {
     public class NumberRepository : Repository
     {
-        public NumberRepository(IConfiguration configuration) : base(configuration) { }
+        //public NumberRepository(IConfiguration configuration) : base(configuration) { }
+        public NumberRepository(IDbConnection connection) : base(connection) { }
         /*static void Set(IDbCommand command, Parameter parameter)
         {
             IDataParameter dataParameter = command.CreateParameter();
@@ -25,10 +26,19 @@ namespace WebApp.Models
                 Set(command, parameter);
             }
         }*/
+        public int Edit(Number obj)
+        {
+            Parameter[] parameters =
+            {
+                new Parameter{ Name = "@id", Value= obj.Id },
+                new Parameter{ Name = "@value", Value= obj.Value },
+            };
+            return Save("UPDATE Number SET NumberValue = @value WHERE NumberId = @id", parameters);
+        }
         public int Add(List<Number> list)
         {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "AddNumber";
@@ -62,7 +72,7 @@ namespace WebApp.Models
                     valueParameter.ParameterName = "@Value";
                     command.Parameters.Add(valueParameter);
 
-                    connection.Open();
+                    //connection.Open();
                     int ret = 0;
                     foreach (Number item in list)
                     {
@@ -74,11 +84,11 @@ namespace WebApp.Models
                     return ret;
                 }
             }
-        }
+        //}
         public int Edit(List<Number> list)
         {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "EditNumber";
@@ -92,7 +102,7 @@ namespace WebApp.Models
                     valueParameter.ParameterName = "@Value";
                     command.Parameters.Add(valueParameter);
 
-                    connection.Open();
+                    //connection.Open();
                     int ret = 0;
                     foreach (Number item in list)
                     {
@@ -103,16 +113,16 @@ namespace WebApp.Models
                     return ret;
                 }
             }
-        }
+        //}
         public List<Number> GetNumbers(int id)
         {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
+            ////using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "GetNumbersByResult";
                     command.CommandType = CommandType.StoredProcedure;
-                    connection.Open();
+                    //connection.Open();
                     Set(command, new Parameter { Name = "@id", Value = id });
                     using (IDataReader reader = command.ExecuteReader())
                     {
@@ -135,11 +145,11 @@ namespace WebApp.Models
                     }
                 }
             }
-        }
+        //}
         public List<string> GetNumbersByResult(int id)
         {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "SELECT NumberValue FROM Number WHERE ResultId = @id ORDER BY PrizeId";
@@ -148,7 +158,7 @@ namespace WebApp.Models
                     parameter.ParameterName = "@id";
                     parameter.Value = id;
                     command.Parameters.Add(parameter);
-                    connection.Open();
+                    //connection.Open();
                     using (IDataReader reader = command.ExecuteReader())
                     {
                         List<string> list = new List<string>();
@@ -162,4 +172,4 @@ namespace WebApp.Models
             }
         }
     }
-}
+//}

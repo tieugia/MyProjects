@@ -13,7 +13,11 @@ namespace WebApp.Models
         //fields
         //IDbConnection connection;
         public ResultRepository(IDbConnection connection) : base(connection) { }
-
+        public int Delete(int id)
+        {
+            Parameter parameter = new Parameter { Name = "@id", Value = id };
+            return Save("DeleteResult", parameter, CommandType.StoredProcedure);
+        }
         public int Add(Result obj)
         {
             Parameter[] parameters =
@@ -44,12 +48,14 @@ namespace WebApp.Models
                 parameter.ParameterName = "@id";
                 command.Parameters.Add(parameter);
                 //connection.Open();
-                IDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                using (IDataReader reader = command.ExecuteReader())
                 {
-                    return Fetch(reader);
+                    if (reader.Read())
+                    {
+                        return Fetch(reader);
+                    }
+                    return null;
                 }
-                return null;
             }
         }
         //}

@@ -90,7 +90,7 @@ namespace WebApp.Models
             {
                 if (number is null)
                 {
-                    number = new NumberRepository(configuration);
+                    number = new NumberRepository(Connection);
                 }
                 return number;
             }

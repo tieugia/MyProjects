@@ -18,6 +18,19 @@ namespace WebApp.Controllers
         {
             this.provider = provider;
         }
+        public IActionResult Delete(int id)
+        {
+            provider.Result.Delete(id);
+            return Redirect("/result");
+        }
+        public IActionResult Show(int id)
+        {
+            Result obj = provider.Result.GetResult(id);
+            ViewBag.pattern = provider.Pattern.GetShow(obj.ProvinceId);
+            //ViewBag.numbers = provider.Number.GetNumbersByResult(id).ToArray();
+            ViewBag.numbers = provider.Number.GetNumbers(id);
+            return View(obj);
+        }
         public IActionResult Update(int id)
         {
             Result obj = provider.Result.GetResult(id);

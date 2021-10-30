@@ -10,14 +10,25 @@ namespace WebApp.Controllers
 {
     public class NumberController : Controller
     {
-        NumberRepository numberRepository;
-        public NumberController(IConfiguration configuration)
+        //NumberRepository numberRepository;
+        SiteProvider provider;
+        //public NumberController(IConfiguration configuration)
+        //{
+        //    numberRepository = new NumberRepository(configuration);
+        //}
+        public NumberController(SiteProvider provider)
         {
-            numberRepository = new NumberRepository(configuration);
+            this.provider = provider;
         }
         public IActionResult Index()
         {
-            return View(numberRepository.GetNumbers(1));
+            return View(provider.Number.GetNumbers(1));
+        }
+        [HttpPost]
+        public IActionResult Edit(Number obj)
+        {
+            //return Json(obj);
+            return Json(provider.Number.Edit(obj));
         }
     }
 }
