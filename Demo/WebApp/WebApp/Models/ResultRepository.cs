@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
-    public class ResultRepository: Repository
+    public class ResultRepository : Repository
     {
         //fields
         //IDbConnection connection;
@@ -27,7 +27,7 @@ namespace WebApp.Models
                 new Parameter{Name="@provinceId", Value=obj.ProvinceId}
             };
             int ret = Save("AddResult", parameters, CommandType.StoredProcedure);
-            if (ret>0)
+            if (ret > 0)
             {
                 //obj.Id = (int)parameters[0].DataParameter.Value;
                 obj.Id = (int)parameters[0].Get<int>();
@@ -69,9 +69,34 @@ namespace WebApp.Models
                 ProvinceName = (string)reader["ProvinceName"]
             };
         }
-        public List<Result> GetResults()
+        //public List<Result> GetResults()
+        //{
+        //    return FetchAll<Result>("GetResults", Fetch, CommandType.StoredProcedure);
+        //}
+        public List<Result> GetResults(int page, int size, out int count)
         {
-            return FetchAll<Result>("GetResults", Fetch, CommandType.StoredProcedure);
+            using (IDbCommand command = connection.CreateCommand())
+            {
+                command.CommandText = "GetResultsAndCount";
+                command.CommandType = CommandType.StoredProcedure;
+                Parameter[] parameters =
+                {
+                    new Parameter{Name = "@index", Value=(page-1)*size, DbType = DbType.Int32},
+                    new Parameter{Name = "@size", Value=size, DbType = DbType.Int32},
+                    new Parameter{Name = "@count", Direction=ParameterDirection.Output, DbType = DbType.Int32}
+                };
+                Set(command, parameters);
+                List<Result> results = new List<Result>();
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(Fetch(reader));
+                    }
+                }
+                count = parameters[2].Get<int>();
+                return results;
+            }
         }
         //public List<Result> GetResults()
         //{

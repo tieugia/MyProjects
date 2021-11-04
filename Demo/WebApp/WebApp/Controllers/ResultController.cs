@@ -23,6 +23,15 @@ namespace WebApp.Controllers
             provider.Result.Delete(id);
             return Redirect("/result");
         }
+        public IActionResult DeleteMany(int[] id)
+        {
+            //Cách 1: dùng vòng lặp
+            foreach (int v in id)
+            {
+                provider.Result.Delete(v);
+            }
+            return Redirect("/result");
+        }
         public IActionResult Show(int id)
         {
             Result obj = provider.Result.GetResult(id);

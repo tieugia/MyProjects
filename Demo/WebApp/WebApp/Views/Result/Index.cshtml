@@ -4,6 +4,7 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
+                <th><button class="btn btn-danger">Delete</button></th>
                 <th>Id</th>
                 <th>Date</th>
                 <th>Province</th>
@@ -18,6 +19,9 @@
             @foreach (WebApp.Models.Result item in Model)
             {
                 <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="@item.Id" />
+                    </td>
                     <td>@item.Id</td>
                     <!-- mm: Minute, MM: Month -->
                     <td>@item.Date.ToString("dd/MM/yyyy")</td>

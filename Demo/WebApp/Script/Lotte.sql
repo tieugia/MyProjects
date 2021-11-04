@@ -329,5 +329,49 @@ select * from Pattern
 exec GetShowByProvince 1
 SELECT PrizeId, NumberValue FROM Number WHERE ResultId = 2016 ORDER BY PrizeId;
 
-DELETE FROM Number WHERE ResultId = 2016;
-DELETE FROM Result WHERE ResultId = 2016;
+go
+create proc DeleteResult(@id int)
+as
+begin
+	DELETE FROM Number WHERE ResultId = @id;
+	DELETE FROM Result WHERE ResultId = @id;
+end
+go
+DELETE Number;
+DELETE Result;
+DELETE ProvincePattern;
+DELETE Province;
+--
+DELETE FROM Result
+DELETE FROM Province
+DELETE FROM Number
+--
+SELECT * FROM Province
+SELECT * FROM Area
+SELECT * FROM Prize
+SELECT * FROM Result
+SELECT * FROM Number
+--
+insert into Area(AreaName) values (N'Miền Nam')
+--
+SELECT * from Result order by ResultDate desc
+	offset 0 rows fetch next 3 rows only
+--OFFSET la so thu tu trang
+go
+create proc GetResultsAndCount(
+	@index int,
+	@size int,
+	@count int out
+)
+as
+begin
+	select Result.*, ProvinceName from Result 
+		join Province on Result.ProvinceId = Province.ProvinceId
+		order by ResultDate desc
+		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
+	SELECT @count = COUNT(*) FROM Result;
+end
+DECLARE @c INT = 0
+EXEC GetResultsAndCount @index = 0, @size = 3, @count = @c out;
+PRINT @c
+SELECT * FROM Result WHERE ResultDate = FORMAT(GETDATE(), 'yyyy/MM/dd') --> lay ngay hom nay
