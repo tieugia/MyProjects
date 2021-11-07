@@ -10,6 +10,8 @@ namespace WebApp.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public short ProvinceId { get; set; }
+        public byte PatternId { get; set; }
+        public string[] Numbers { get; set; }
         public string ProvinceName { get; set; }
     }
 }

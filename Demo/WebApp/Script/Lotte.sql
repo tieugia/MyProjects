@@ -66,34 +66,34 @@ as
 Update Province SET AreaId=@areaId, ProvinceName=@name
 where ProvinceId=@id
 go
---create proc GetProvince(@id smallint)
---as
---	select * from Province where ProvinceId=@id
---go
---create table Prize(
---	PrizeId tinyint not null primary key,
---	PrizeName nvarchar(32) not null
---)
---Go
---insert into Prize(PrizeId, PrizeName) values
---	(0,N'Giải ĐB'),
---	(1,N'Giải Nhất')
---go
---Create proc AddPrize(@id tinyint, @name nvarchar(32))
---as 
---	insert into Prize(PrizeId, PrizeName) values (@id, @name)
---go
---create proc GetPrizes
---as 
---select * from Prize
---go
+create proc GetProvince(@id smallint)
+as
+	select * from Province where ProvinceId=@id
+go
+create table Prize(
+	PrizeId tinyint not null primary key,
+	PrizeName nvarchar(32) not null
+)
+Go
+insert into Prize(PrizeId, PrizeName) values
+	(0,N'Giải ĐB'),
+	(1,N'Giải Nhất')
+go
+Create proc AddPrize(@id tinyint, @name nvarchar(32))
+as 
+	insert into Prize(PrizeId, PrizeName) values (@id, @name)
+go
+create proc GetPrizes
+as 
+select * from Prize
+go
 
 --Made at home--
 
---create proc GetPrize(@id tinyint)
---as
---	select * from Prize where PrizeId = @id
---go
+create proc GetPrize(@id tinyint)
+as
+	select * from Prize where PrizeId = @id
+go
 create proc EditPrize (@id tinyint, @name nvarchar(32))
 as
 	Update Prize set PrizeName = @name where PrizeId = @id
@@ -357,6 +357,7 @@ insert into Area(AreaName) values (N'Miền Nam')
 SELECT * from Result order by ResultDate desc
 	offset 0 rows fetch next 3 rows only
 --OFFSET la so thu tu trang
+--drop proc GetResultsAndCount
 go
 create proc GetResultsAndCount(
 	@index int,
@@ -365,13 +366,27 @@ create proc GetResultsAndCount(
 )
 as
 begin
-	select Result.*, ProvinceName from Result 
+	select Result.*, ProvinceName, PatternId from Result 
 		join Province on Result.ProvinceId = Province.ProvinceId
 		order by ResultDate desc
 		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
 	SELECT @count = COUNT(*) FROM Result;
 end
+go
+create proc GetResultsWithoutCount(
+	@index int,
+	@size int
+)
+as
+begin
+	select Result.*, ProvinceName, PatternId from Result 
+		join Province on Result.ProvinceId = Province.ProvinceId
+		order by ResultDate desc
+		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
+end
+go
 DECLARE @c INT = 0
 EXEC GetResultsAndCount @index = 0, @size = 3, @count = @c out;
 PRINT @c
 SELECT * FROM Result WHERE ResultDate = FORMAT(GETDATE(), 'yyyy/MM/dd') --> lay ngay hom nay
+

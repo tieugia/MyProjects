@@ -69,6 +69,12 @@ namespace WebApp.Models
                 ProvinceName = (string)reader["ProvinceName"]
             };
         }
+        static Result FetchWithPattern(IDataReader reader)
+        {
+            Result result = Fetch(reader);
+            result.PatternId = (byte)reader["PatternId"];
+            return result;
+        }
         //public List<Result> GetResults()
         //{
         //    return FetchAll<Result>("GetResults", Fetch, CommandType.StoredProcedure);
@@ -91,10 +97,35 @@ namespace WebApp.Models
                 {
                     while (reader.Read())
                     {
-                        results.Add(Fetch(reader));
+                        //results.Add(Fetch(reader));
+                        results.Add(FetchWithPattern(reader));
                     }
                 }
                 count = parameters[2].Get<int>();
+                return results;
+            }
+        }
+        public List<Result> GetResults(int page, int size)
+        {
+            using (IDbCommand command = connection.CreateCommand())
+            {
+                command.CommandText = "GetResultsWithoutCount";
+                command.CommandType = CommandType.StoredProcedure;
+                Parameter[] parameters =
+                {
+                    new Parameter{Name = "@index", Value=(page-1)*size, DbType = DbType.Int32},
+                    new Parameter{Name = "@size", Value=size, DbType = DbType.Int32},
+                };
+                Set(command, parameters);
+                List<Result> results = new List<Result>();
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        //results.Add(Fetch(reader));
+                        results.Add(FetchWithPattern(reader));
+                    }
+                }
                 return results;
             }
         }

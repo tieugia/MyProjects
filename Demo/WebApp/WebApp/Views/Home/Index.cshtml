@@ -1,10 +1,9 @@
 ﻿@model List<WebApp.Models.Result>
-    <p>Total: @ViewBag.count</p>
-@foreach (WebApp.Models.Result item in Model)
-{
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title"><a href="/">@item.ProvinceName - @item.Date.ToString("dd/MM/yyyy")</a></h2>
-        </div>
-    </div>
-}
+@*<p>Total: @ViewBag.count</p>*@
+<p>Total: @ViewBag.n</p>
+<ul class="pagination">
+    @for (int i = 0; i < ViewBag.n; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/home/index/@i">@i</a></li>
+    }
+</ul>

@@ -62,11 +62,11 @@ namespace WebApp.Controllers
         //    //provider.Prize = new provider.Prize(configuration);
         //    //provider.Pattern = new provider.Pattern(configuration);
         //}
-        public IActionResult Index()
-        {
-            Console.WriteLine("***********Truoc khi ket thuc***********");
-            return View(provider.Result.GetResults());
-        }
+        //public IActionResult Index()
+        //{
+        //    Console.WriteLine("***********Truoc khi ket thuc***********");
+        //    return View(provider.Result.GetResults());
+        //}
         public IActionResult Create()
         {
             ViewBag.provinces = provider.Province.GetProvinces();

@@ -11,18 +11,43 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        int size = 9;
         SiteProvider provider;
         public HomeController(IConfiguration configuration)
         {
             provider = new SiteProvider(configuration);
         }
-        public IActionResult Index(int id =1)
+        public IActionResult Index(int id = 1)
         {
             //Pagination
             //return View(provider.Result.GetResults());
             List<Result> list = provider.Result.GetResults(id, 3, out int count);
-            ViewBag.count = count;
+            //ViewBag.count = count;
+            //ViewBag.n = Math.Ceiling(count / (double)size);
+            foreach (var item in list)
+            {
+                item.Numbers = provider.Number.GetNumbersByResult(item.Id).ToArray();
+            }
+            ViewBag.n = (count - 1) / size + 1;
+            ViewBag.patterns = provider.Pattern.GetPatterns();  
             return View(list);
+        }
+        public IActionResult LoadMore()
+        {
+            return Index(1);
+        }
+        public IActionResult GetPatterns()
+        {
+            return Json(provider.Pattern.GetPatterns());
+        }
+        public IActionResult GetResults(int id)
+        {
+            List<Result> list = provider.Result.GetResults(id, size);
+            foreach (var item in list)
+            {
+                item.Numbers = provider.Number.GetNumbersByResult(item.Id).ToArray();
+            }
+            return Json(list);
         }
         //public IActionResult Index()
         //{
