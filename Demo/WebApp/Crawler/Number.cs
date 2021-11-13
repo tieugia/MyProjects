@@ -7,7 +7,7 @@ namespace Crawler
     public class Number
     {
         [Column("NumberId")]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [Column("NumberValue")]
         public string Value { get; set; }
         public byte PrizeId { get; set; }

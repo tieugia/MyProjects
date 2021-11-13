@@ -45,6 +45,7 @@ namespace WebApp
                 //    await context.Response.WriteAsync("Hello World!");
                 //});
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(name: "dashboard", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

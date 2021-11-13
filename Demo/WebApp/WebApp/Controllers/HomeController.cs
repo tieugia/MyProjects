@@ -17,6 +17,20 @@ namespace WebApp.Controllers
         {
             provider = new SiteProvider(configuration);
         }
+        public IActionResult Datatable()
+        {
+            List<Result> results = provider.Result.GetResults();
+            ViewBag.patterns = provider.Pattern.GetPatterns();
+            foreach (var item in results)
+            {
+                item.Numbers = provider.Number.GetNumbersByResult(item.Id).ToArray();
+            }
+            return View(results);
+        }
+        public IActionResult LazyLoad()
+        {
+            return LoadMore();
+        }
         public IActionResult Index(int id = 1)
         {
             //Pagination

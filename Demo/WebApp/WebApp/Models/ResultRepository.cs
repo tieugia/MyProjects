@@ -13,6 +13,10 @@ namespace WebApp.Models
         //fields
         //IDbConnection connection;
         public ResultRepository(IDbConnection connection) : base(connection) { }
+        public List<Result> GetResults()
+        {
+            return FetchAll<Result>("GetResults", FetchWithPattern, CommandType.StoredProcedure);
+        }
         public int Delete(int id)
         {
             Parameter parameter = new Parameter { Name = "@id", Value = id };

@@ -16,7 +16,7 @@ namespace Crawler
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-QPQE0RM\\MSSQLSERVER02;Initial Catalog=Lotte;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=LAPTOP-P4GDIPQ9;Initial Catalog=Lotte;Integrated Security=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

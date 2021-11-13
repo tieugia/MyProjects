@@ -86,7 +86,7 @@ namespace Crawler
         static void LoadProvinces()
         {
             string url = "https://www.minhngoc.net.vn/ket-qua-xo-so/mien-nam/tp-hcm.html";
-            List<Province> list = GetProvinces(url, 102, 1);
+            List<Province> list = GetProvinces(url, 3, 1);
             //Entity Framework
             using (LotteContext context = new LotteContext())
             {
@@ -116,7 +116,7 @@ namespace Crawler
                 {
                     AreaId = 3,
                     Name = provinceName,
-                    PatternId = 1
+                    PatternId = 8
                 };
                 provinces.Add(province);
                 province.Results = GetResults("https://www.minhngoc.net.vn/" + href, province);

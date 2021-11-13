@@ -131,7 +131,7 @@ create table Result(
 )
 go
 create proc AddResult(
-	@id int out,.
+	@id int out,
 	@date date,
 	@provinceId smallint
 )
@@ -346,11 +346,11 @@ DELETE FROM Result
 DELETE FROM Province
 DELETE FROM Number
 --
-SELECT * FROM Province
-SELECT * FROM Area
-SELECT * FROM Prize
-SELECT * FROM Result
-SELECT * FROM Number
+--SELECT * FROM Province
+--SELECT * FROM Area
+--SELECT * FROM Prize
+--SELECT * FROM Result
+--SELECT * FROM Number
 --
 insert into Area(AreaName) values (N'Miền Nam')
 --
@@ -389,4 +389,293 @@ DECLARE @c INT = 0
 EXEC GetResultsAndCount @index = 0, @size = 3, @count = @c out;
 PRINT @c
 SELECT * FROM Result WHERE ResultDate = FORMAT(GETDATE(), 'yyyy/MM/dd') --> lay ngay hom nay
-
+insert into Pattern(PatternAdd, PatternShow) values 
+(('<table class="table table-bordered">
+    <tr>
+        <td>Giải ĐB</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="0" /> <input type="number" name="num"
+                value="330932" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Nhất</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="1" /> <input type="number" name="num"
+                value="98432" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Nhì</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="2" /> <input type="number" name="num"
+                value="34253" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Ba</td>
+        <td colspan="6"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="96726" /> </td>
+        <td colspan="6"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="283215" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Tư</td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="58470" /> </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="33448" /> </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="68392" /> </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="76755" /> </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="14609" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="28459" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="78705" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Năm</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="0829" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Sáu</td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="6" /> <input type="number" name="num"
+                value="3386" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="6" /> <input type="number" name="num"
+                value="7416" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="6" /> <input type="number" name="num"
+                value="8577" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Bảy</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="7" /> <input type="number" name="num"
+                value="950" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Tám</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="8" /> <input type="number" name="num" value="83" />
+        </td>
+    </tr>
+</table>'),('<table class="table table-bordered tbl">
+    <tbody>
+        <tr>
+            <th>Giải ĐB</th>
+            <td colspan="12">{0}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th>Giải nhất</th>
+            <td colspan="12">{1}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Giải nhì</th>
+            <td colspan="12">{2}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th>Giải ba</th>
+            <td colspan="6">{3}</td>
+            <td colspan="6">{4}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="no-border-bottom">
+            <th rowspan="2">Giải tư</th>
+            <td colspan="3">{5}</td>
+            <td colspan="3">{6}</td>
+            <td colspan="3">{7}</td>
+            <td colspan="3">{8}</td>
+        </tr>
+        <tr class="no-border-top">
+            <td colspan="4">{9}</td>
+            <td colspan="4">{10}</td>
+            <td colspan="4">{11}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th>Giải năm</th>
+            <td colspan="12">{12}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Giải sáu</th>
+            <td colspan="4">{13}</td>
+            <td colspan="4">{14}</td>
+            <td colspan="4">{15}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th>Giải bảy</th>
+            <td colspan="12">{16}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Giải tám</th>
+            <td colspan="12">{17}</td>
+        </tr>
+    </tbody>
+</table>')),(('<table class="table-bordered">
+    <tr>
+        <td>Giải ĐB</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="0" /> <input type="number" name="num"
+                value="31156" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Nhất</td>
+        <td colspan="12"> <input type="hidden" name="prizeId" value="1" /> <input type="number" name="num"
+                value="70905" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Nhì</td>
+        <td colspan="6"> <input type="hidden" name="prizeId" value="2" /> <input type="number" name="num"
+                value="52422" /> </td>
+        <td colspan="6"> <input type="hidden" name="prizeId" value="2" /> <input type="number" name="num"
+                value="68986" /> </td>
+    </tr>
+    <tr>
+        <td rowspan="2">Giải Ba</td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="95981" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="27557" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="61315" /> </td>
+    </tr>
+    <tr>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="00056" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="79187" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="3" /> <input type="number" name="num"
+                value="64291" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Tư</td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="4207" /> </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="4639" /> </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="7518" /> </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="4" /> <input type="number" name="num"
+                value="3207" /> </td>
+    </tr>
+    <tr>
+        <td rowspan="2">Giải Năm</td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="6514" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="8442" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="4642" /> </td>
+    </tr>
+    <tr>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="1514" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="5220" /> </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="5" /> <input type="number" name="num"
+                value="7211" /> </td>
+    </tr>
+    <tr>
+        <td>Giải Sáu</td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="6" /> <input type="number" name="num" value="341" />
+        </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="6" /> <input type="number" name="num" value="184" />
+        </td>
+        <td colspan="4"> <input type="hidden" name="prizeId" value="6" /> <input type="number" name="num" value="364" />
+        </td>
+    </tr>
+    <tr>
+        <td>Giải Bảy</td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="7" /> <input type="number" name="num" value="33" />
+        </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="7" /> <input type="number" name="num" value="92" />
+        </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="7" /> <input type="number" name="num" value="39" />
+        </td>
+        <td colspan="3"> <input type="hidden" name="prizeId" value="7" /> <input type="number" name="num" value="01" />
+        </td>
+    </tr>
+</table>'),('<table class="tbl">
+    <tbody>
+        <tr>
+            <th>Giải ĐB</th>
+            <td colspan="12">{0}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th>Giải nhất</th>
+            <td colspan="12">{1}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Giải nhì</th>
+            <td colspan="6">{2}</td>
+            <td colspan="6">{3}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th rowspan="2">Giải ba</th>
+            <td colspan="4">{4}</td>
+            <td colspan="4">{5}</td>
+            <td colspan="4">{6}</td>
+        </tr>
+        <tr class="bg">
+            <td colspan="4">{7}</td>
+            <td colspan="4">{8}</td>
+            <td colspan="4">{9}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Giải tư</th>
+            <td colspan="3">{10}</td>
+            <td colspan="3">{11}</td>
+            <td colspan="3">{12}</td>
+            <td colspan="3">{13}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th rowspan="2">Giải năm</th>
+            <td colspan="4">{14}</td>
+            <td colspan="4">{15}</td>
+            <td colspan="4">{16}</td>
+        </tr>
+        <tr class="bg">
+            <td colspan="4">{17}</td>
+            <td colspan="4">{18}</td>
+            <td colspan="4">{19}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Giải sáu</th>
+            <td colspan="4">{20}</td>
+            <td colspan="4">{21}</td>
+            <td colspan="4">{22}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="bg">
+            <th>Giải bảy</th>
+            <td colspan="3">{23}</td>
+            <td colspan="3">{24}</td>
+            <td colspan="3">{25}</td>
+            <td colspan="3">{26}</td>
+        </tr>
+    </tbody>
+</table>'))
