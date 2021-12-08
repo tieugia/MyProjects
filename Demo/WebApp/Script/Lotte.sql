@@ -77,7 +77,15 @@ create table Prize(
 Go
 insert into Prize(PrizeId, PrizeName) values
 	(0,N'Giải ĐB'),
-	(1,N'Giải Nhất')
+	(1,N'Giải Nhất'),
+	(2,N'Giải Nhì'),
+	(3,N'Giải Ba'),
+	(4,N'Giải Tư'),
+	(5,N'Giải Năm'),
+	(6,N'Giải Sáu'),
+	(7,N'Giải Bảy'),
+	(8,N'Giải Tám')
+
 go
 Create proc AddPrize(@id tinyint, @name nvarchar(32))
 as 
@@ -102,8 +110,9 @@ go
 go
 Create table Number(
 	NumberId int not null primary key identity(1,1),
+	ResultId int not null references Result(ResultId),
 	PrizeId tinyint not null references Prize(PrizeId),
-	ProvinceId smallint not null references Province(ProvinceId),
+	--ProvinceId smallint not null references Province(ProvinceId),
 	NumberValue varchar(8) not null,
 	NumberDate Date not null default GETDATE()
 );
@@ -208,56 +217,6 @@ create table Pattern(
 	PatternShow nvarchar(max)
 )
 go
-insert into Pattern (PatternShow, PatternAdd) values (N'<table class="tbl">
-    <tr>
-        <th>Giải Đặc biệt</th>
-        <td colspan="12">{0}</td>
-    </tr>
-    <tr>
-        <th>Giải nhất</th>
-        <td colspan="12">{1}</td>
-    </tr>
-    <tr>
-        <th>Giải nhì</th>
-        <td colspan="12">{2}</td>
-    </tr>
-    <tr>
-        <th>Giải ba</th>
-        <td colspan="6">{3}</td>
-        <td colspan="6">{4}</td>
-    </tr>
-    <tr class="no-border-bottom">
-        <th rowspan="2">Giải tư</th>
-        <td colspan="3">{5}</td>
-        <td colspan="3">{6}</td>
-        <td colspan="3">{7}</td>
-        <td colspan="3">{8}</td>
-    </tr>
-    <tr class="no-border-top">
-        <td colspan="4">{9}</td>
-        <td colspan="4">{10}</td>
-        <td colspan="4">{11}</td>
-    </tr>
-    <tr>
-        <th>Giải năm</th>
-        <td colspan="12">{12}</td>
-    </tr>
-    <tr>
-        <th>Giải sáu</th>
-        <td colspan="4">{13}</td>
-        <td colspan="4">{14}</td>
-        <td colspan="4">{15}</td>
-    </tr>
-    <tr>
-        <th>Giải bảy</th>
-        <td colspan="12">{16}</td>
-    </tr>
-    <tr>
-        <th>Giải tám</th>
-        <td colspan="12">{17}</td>
-    </tr>
-</table>', NULL)
-go
 --select * from Pattern
 --drop table ProvincePattern
 create table ProvincePattern(
@@ -296,99 +255,6 @@ create proc AddPattern(
 as
 	insert into Pattern(PatternShow, PatternAdd) values (@Show, @Add)
 go
---alter table Province add PatternId tinyint references Pattern(PatternId)
-alter table Province add PatternId tinyint not null default 1 references Pattern(PatternId)
---alter table Province drop column PatternId	
---alter table Province drop constraint FK__Province__Patter__1AD3FDA4	
-SELECT * FROM Number WHERE ResultId = 10 ORDER BY PrizeId
---exec GetShowByProvince 1
-go
-create proc EditPattern(
-	@id tinyint,
-	@add nvarchar(max) = null,
-	@show nvarchar(max) = null
-)
-as
-	update Pattern set PatternShow = @show, PatternAdd = @add where PatternId = @id
-go
-exec GetPatternByProvince 8
-select * from Province
-go
---drop proc EditNumber
-go
-create proc EditNumber(
-	@id bigint,
-	--@prizeId bigint,
-	--@resultId int,
-	@Value varchar(8)
-) as
-	UPDATE Number set NumberValue = @Value
-		where NumberId = @id
-go
-select * from Pattern
-exec GetShowByProvince 1
-SELECT PrizeId, NumberValue FROM Number WHERE ResultId = 2016 ORDER BY PrizeId;
-
-go
-create proc DeleteResult(@id int)
-as
-begin
-	DELETE FROM Number WHERE ResultId = @id;
-	DELETE FROM Result WHERE ResultId = @id;
-end
-go
-DELETE Number;
-DELETE Result;
-DELETE ProvincePattern;
-DELETE Province;
---
-DELETE FROM Result
-DELETE FROM Province
-DELETE FROM Number
---
---SELECT * FROM Province
---SELECT * FROM Area
---SELECT * FROM Prize
---SELECT * FROM Result
---SELECT * FROM Number
---
-insert into Area(AreaName) values (N'Miền Nam')
---
-SELECT * from Result order by ResultDate desc
-	offset 0 rows fetch next 3 rows only
---OFFSET la so thu tu trang
---drop proc GetResultsAndCount
-go
-create proc GetResultsAndCount(
-	@index int,
-	@size int,
-	@count int out
-)
-as
-begin
-	select Result.*, ProvinceName, PatternId from Result 
-		join Province on Result.ProvinceId = Province.ProvinceId
-		order by ResultDate desc
-		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
-	SELECT @count = COUNT(*) FROM Result;
-end
-go
-create proc GetResultsWithoutCount(
-	@index int,
-	@size int
-)
-as
-begin
-	select Result.*, ProvinceName, PatternId from Result 
-		join Province on Result.ProvinceId = Province.ProvinceId
-		order by ResultDate desc
-		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
-end
-go
-DECLARE @c INT = 0
-EXEC GetResultsAndCount @index = 0, @size = 3, @count = @c out;
-PRINT @c
-SELECT * FROM Result WHERE ResultDate = FORMAT(GETDATE(), 'yyyy/MM/dd') --> lay ngay hom nay
 insert into Pattern(PatternAdd, PatternShow) values 
 (('<table class="table table-bordered">
     <tr>
@@ -679,3 +545,110 @@ insert into Pattern(PatternAdd, PatternShow) values
         </tr>
     </tbody>
 </table>'))
+--alter table Province add PatternId tinyint references Pattern(PatternId)
+alter table Province add PatternId tinyint not null default 1 references Pattern(PatternId)
+--alter table Province drop column PatternId	
+--alter table Province drop constraint FK__Province__Patter__1AD3FDA4	
+SELECT * FROM Number WHERE ResultId = 10 ORDER BY PrizeId
+--exec GetShowByProvince 1
+go
+create proc EditPattern(
+	@id tinyint,
+	@add nvarchar(max) = null,
+	@show nvarchar(max) = null
+)
+as
+	update Pattern set PatternShow = @show, PatternAdd = @add where PatternId = @id
+go
+exec GetPatternByProvince 8
+select * from Province
+go
+--drop proc EditNumber
+go
+create proc EditNumber(
+	@id bigint,
+	--@prizeId bigint,
+	--@resultId int,
+	@Value varchar(8)
+) as
+	UPDATE Number set NumberValue = @Value
+		where NumberId = @id
+go
+select * from Pattern
+exec GetShowByProvince 1
+SELECT PrizeId, NumberValue FROM Number WHERE ResultId = 2016 ORDER BY PrizeId;
+
+go
+create proc DeleteResult(@id int)
+as
+begin
+	DELETE FROM Number WHERE ResultId = @id;
+	DELETE FROM Result WHERE ResultId = @id;
+end
+go
+DELETE Number;
+DELETE Result;
+DELETE ProvincePattern;
+DELETE Province;
+--
+DELETE FROM Result
+DELETE FROM Province
+DELETE FROM Number
+--
+--SELECT * FROM Province
+--SELECT * FROM Area
+--SELECT * FROM Prize
+--SELECT * FROM Result
+--SELECT * FROM Number
+--
+insert into Area(AreaName) values (N'Miền Nam')
+--
+SELECT * from Result order by ResultDate desc
+	offset 0 rows fetch next 3 rows only
+--OFFSET la so thu tu trang
+--drop proc GetResultsAndCount
+go
+create proc GetResultsAndCount(
+	@index int,
+	@size int,
+	@count int out
+)
+as
+begin
+	select Result.*, ProvinceName, PatternId from Result 
+	--select Result.*, ProvinceName from Result 
+		join Province on Result.ProvinceId = Province.ProvinceId
+		order by ResultDate desc
+		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
+	SELECT @count = COUNT(*) FROM Result;
+end
+go
+--drop proc GetResultsWithoutCount
+go
+create proc GetResultsWithoutCount(
+	@index int,
+	@size int
+)
+as
+begin
+	select Result.*, ProvinceName, PatternId from Result 
+	--select Result.*, ProvinceName from Result 
+		join Province on Result.ProvinceId = Province.ProvinceId
+		order by ResultDate desc
+		OFFSET @index ROWS FETCH NEXT @size ROWS ONLY;
+end
+go
+DECLARE @c INT = 0
+EXEC GetResultsAndCount @index = 0, @size = 3, @count = @c out;
+PRINT @c
+SELECT * FROM Result WHERE ResultDate = FORMAT(GETDATE(), 'yyyy/MM/dd') --> lay ngay hom nay
+go
+alter proc GetResults
+as
+	SELECT Result.*, ProvinceName, PatternId FROM Result JOIN Province ON Result.ProvinceId = Province.ProvinceId
+	ORDER BY ResultDate DESC
+go
+select * from Province
+select * from Area
+select * from Number
+Select * from Prize

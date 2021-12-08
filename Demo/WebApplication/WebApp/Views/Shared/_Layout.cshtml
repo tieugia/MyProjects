@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a href="/dashboard/">Dashboard</a></li>
+        <li><a href="/dashboard/role">Role</a></li>
+        <li><a href="/dashboard/member">Member</a></li>
+        <li><a href="/dashboard/access">Access</a></li>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li><a href="/auth">Profile</a></li>
+            <li><a href="/auth/Logout">Logout</a></li>
+            <li><a href="/auth/change">Change Password</a></li>
+        }
+        else
+        {
+            <li><a href="/auth/register">Register</a></li>
+            <li><a href="/auth/Login">Login</a></li>
+
+            <li><a href="/auth/Forgot">Forgot Password</a></li>
+        }
+
+    </ul>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

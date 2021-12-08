@@ -1,0 +1,18 @@
+﻿@model Access
+<form method="post">
+    <div>
+        <label asp-for="AccessName">Name</label>
+        <input type="text" asp-for="AccessName" />
+    </div>
+    <div>
+        <label asp-for="RoleId">Role</label>
+        <select  asp-for="RoleId" asp-items="@ViewBag.roles" ></select>
+    </div>
+    <div>
+        <label asp-for="AccessUrl">Url</label>
+        <input type="text" asp-for="AccessUrl" />
+    </div>
+    <div>
+        <button>Save Changes</button>
+    </div>
+</form> 

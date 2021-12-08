@@ -231,3 +231,5 @@ D:\MyProjects\Demo\WebApp\WebApp\obj\Debug\net5.0\Razor\Views\Home\Index2.cshtml
 D:\MyProjects\Demo\WebApp\WebApp\obj\Debug\net5.0\Razor\Views\Home\_Show.cshtml.g.cs
 D:\MyProjects\Demo\WebApp\WebApp\obj\Debug\net5.0\Razor\Views\Home\LoadMore.cshtml.g.cs
 D:\MyProjects\Demo\WebApp\WebApp\obj\Debug\net5.0\Razor\Views\Home\LazyLoad.cshtml.g.cs
+D:\MyProjects\Demo\WebApp\WebApp\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Home\Index.cshtml.g.cs
+D:\MyProjects\Demo\WebApp\WebApp\obj\Debug\net5.0\Razor\Views\Home\Datatable.cshtml.g.cs

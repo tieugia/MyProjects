@@ -116,7 +116,7 @@ namespace Crawler
                 {
                     AreaId = 3,
                     Name = provinceName,
-                    PatternId = 8
+                    PatternId = 1
                 };
                 provinces.Add(province);
                 province.Results = GetResults("https://www.minhngoc.net.vn/" + href, province);
