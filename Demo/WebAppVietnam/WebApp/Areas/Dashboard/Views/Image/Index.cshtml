@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Image>
+<div class="form-group">
+    <a href="/dashboard/image/create" class="btn btn-secondary">Create</a>
+</div>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Original</th>
+            <th>Url</th>
+            <th>Type</th>
+            <th>Size</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.ImageId</td>
+                <td>@item.ImageOriginal</td>
+                <td>
+                    <img src="images/@item.ImageUrl" width="70">
+                </td>
+                <td>@item.ImageType</td>
+                <td>@item.ImageSize</td>
+            </tr>
+        }
+    </tbody>
+</table>

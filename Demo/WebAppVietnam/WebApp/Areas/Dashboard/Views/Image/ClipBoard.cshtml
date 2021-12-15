@@ -1,0 +1,25 @@
+﻿<form name="frm">
+    <div>
+        <label>Paste Image Here</label>
+        <input placeholder="Past here" type="text" name="f"/>
+    </div>
+</form>
+<script src="/js/upload.js"></script>
+<script>
+    frm['f'].onpaste = function(ev) {
+        console.log(ev.clipboardData);
+        var f = ev.clipboardData.files;
+        console.log(f.length)
+        if (f.length > 0) {
+            var fd = new FormData();
+            fd.append('f'), f[0];
+            upload('/dashboard/image/ajax', fd, (d) => {
+                if (d == 1) {
+                    window.location.href = '/dashboard/image';
+                } else {
+                    console.log("Loi");
+                }
+            })
+        }
+    }
+</script>

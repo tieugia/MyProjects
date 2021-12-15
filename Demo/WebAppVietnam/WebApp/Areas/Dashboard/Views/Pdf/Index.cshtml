@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Pdf>
+<a href="/dashboard/pdf/create" class="btn btn-secondary">Create</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Url</th>
+            <th>Size</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+           <tr>
+               <td>@item.PdfId</td>
+               <td>@item.PdfUrl</td>
+               <td>@item.Size</td>
+               <td>
+                   <a href="/dashboard/pdf/detail/@item.PdfId"><i class="fas fa-file-pdf"></i></a>
+               </td>
+           </tr>
+       }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Access>
+    <a href="/dashboard/access/create" class="btn btn-info">Create</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Url</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.AccessId</td>
+                    <td>@item.AccessName</td>
+                    <td>@item.RoleName</td>
+                    <td>@item.AccessUrl</td>
+                </tr>
+            }
+    </tbody>
+</table>

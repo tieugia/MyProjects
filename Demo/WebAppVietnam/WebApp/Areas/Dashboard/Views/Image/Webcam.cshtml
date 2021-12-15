@@ -1,0 +1,36 @@
+﻿<button id="btnOpen">Open Webcam</button>
+<button id="btnClose">Close Webcam</button>
+<button id="btnTake">Take Picture</button>
+<video autoplay width="200" height="180" id="vd"></video>
+<form method="post" name="frm">
+    <input type="text" name="name" required />
+</form>
+<canvas id="cv" width="200" height="180"></canvas>
+<script>
+//1vd24/s
+var opt={audio: false, video: {width: 200, height: 180}};
+$(btnOpen).click(()=>{
+    navigator.mediaDevices.getUserMedia(opt).then((st)=>{
+        vd.srcObject=st;
+    })
+})
+$(btnClose).click(() => {
+    var st=vd.srcObject;
+    var tracks=st.getTracks();
+    for(var i in tracks){
+        tracks[i].stop();
+    }
+    vd.srcObject = null;
+})
+$(btnTake).click(() => {
+    var ct=cv.getContext('2d');
+    ct.drawImage(vd, 0, 0);
+    var d = cv.toDataURL('image/png');
+    //base64
+    $.post('/dashboard/image/webcam', {data: d.substring(22), name: $(frm["name"]).val()}, (d) => {
+        if(d == 1){
+            window.location.href = '/dashboard/image';
+        }
+    });
+});
+</script>

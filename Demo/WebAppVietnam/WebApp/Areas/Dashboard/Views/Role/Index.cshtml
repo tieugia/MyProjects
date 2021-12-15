@@ -1,0 +1,28 @@
+﻿@model Role
+<h1 class="mt-4">Manage Roles</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item active">Manage Roles</li>
+</ol>
+<form method="post" action="/role/add">
+    <div class="form-group">
+        <label asp-for="RoleName">Name</label>
+        <input type="text" asp-for="RoleName" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-secondary">Save changes</button>
+    </div>
+</form>
+<table class="table table-bordered">
+    <tr class="thead-dark">
+        <th class="col-4">Id</th>
+        <th>Name</th>
+    </tr>
+    @foreach (var item in ViewBag.roles)
+    {
+        <tr>
+            <td>@item.RoleId</td>
+            <td>@item.RoleName</td>
+        </tr>
+    }
+</table>

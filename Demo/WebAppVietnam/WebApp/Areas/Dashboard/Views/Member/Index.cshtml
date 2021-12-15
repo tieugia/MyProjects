@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Member>
+
+<h1 class="mt-4">Manage Members</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item active">Manage Members</li>
+</ol>
+<link rel="stylesheet" href="styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="/css/kendo.default.min.css" />
+    <link rel="stylesheet" href="/css/kendo.default.mobile.min.css" />    
+    <script src="/js/jszip.min.js"></script>    
+    <script src="/js/kendo.all.min.js"></script>
+    <button class="btn btn-info" id="pdf">Export to PDF</button>
+<table id="sheet" class="table table-bordered">
+    <thead class="thead-dark">
+        <th class="col-1">Id</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Roles</th>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.MemberId</td>
+                <td>@item.Username</td>
+                <td>@item.Email</td>
+                <td>@item.Gender</td>
+                <td>
+                    <a href="/dashboard/member/roles/@item.MemberId">Roles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(pdf).click(function() {
+        // Convert the DOM element to a drawing using kendo.drawing.drawDOM
+        kendo.drawing.drawDOM(sheet)
+        .then(function(group) {
+            // Render the result as a PDF file
+            return kendo.drawing.exportPDF(group, {
+                paperSize: "auto",
+                margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+            });
+        })
+        .done(function(data) {
+            // Save the PDF file
+            kendo.saveAs({
+                dataURI: data,
+                fileName: "member.pdf",
+                proxyURL: "/dashboard/member/export"
+            });
+        });
+    });
+</script>

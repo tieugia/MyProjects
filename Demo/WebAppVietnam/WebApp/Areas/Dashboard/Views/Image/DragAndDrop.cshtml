@@ -1,0 +1,33 @@
+﻿<style>
+    #zone{
+        text-align:center;
+        border:1px solid;
+        width:500px;
+        height:450px;
+        margin:auto;
+        background-color:pink;
+    }
+</style>
+<div id="zone">Drop Zone</div>
+<script src="~/js/upload.js"></script>
+<script>
+    zone.ondrop = function (ev) {
+        ev.preventDefault();
+        var f = ev.dataTransfer.files;
+        if (f.length > 0) {
+            var fd = new FormData();
+            for (var i = 0; i < f.length; i++) {
+                fd.append('af',f[i])
+            }
+            upload('/dashboard/image/ajaxmultiple', fd, (d) => {
+                if (d == f.length) {
+                    window.location.href = '/dashboard/image';
+                }
+            })
+        }
+    }
+    zone.ondragover = function (ev) {
+        ev.preventDefault();
+        console.log(2);
+    }
+</script>

@@ -1,0 +1,60 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<h2 class=text-center>Welcome @User.Identity.Name</h2>
+<form>
+    <div>
+        <label>Province</label>
+        <select name="provinceId" asp-items="@ViewBag.provinces" class="form-control"></select>
+    </div>
+    <div>
+        <label class="text-right">District</label>
+        <select name="districtId" class="form-control"></select>
+    </div>
+    <div>
+        <label class="text-right">Ward</label>
+        <select name="wardId" class="form-control"></select>
+    </div>
+</form>
+<script>
+    function getDistricts(id) {
+        $.post(`/home/wards/${id}`, (d) => {
+            $('select[name="wardId"]').html(null);
+            for (var i in d) {
+                $('select[name="wardId"]').append(`<option value="${d[i]['wardId']}">${d[i]['wardName']}</option>`)
+            }
+        })
+    }
+    $('select[name="districtId"]').change(function () {
+        var id = $(this).val();
+        localStorage.setItem('wid', id);
+        //console.log(id);
+        getDistricts(id);
+    })
+    function getProvinces(id) {
+        $.post(`/home/districts/${id}`, (d) => {
+            //console.log(d);
+            $('select[name="districtId"]').html(null);
+            for (var i in d) {
+                $('select[name="districtId"]').append(`<option value="${d[i]['districtId']}">${d[i]['districtName']}</option>`);
+            }
+        });
+    }
+    //localStorage.removeItem('pid');
+    var pid = localStorage.getItem('pid');
+    console.log('***********', pid);
+    if (pid == null) {
+        pid = $('select[name="provinceId"]').val();
+        localStorage.setItem('pid', pid);
+    }
+    getProvinces(pid);
+    var wid = localStorage.getItem('wid');
+    if (wid == null) {
+        wid = $('select[name="districtId"]').val();
+        localStorage.setItem('wid', wid);
+    }
+    getDistricts(wid);
+    $('select[name="provinceId"]').change(function () {
+        var id = $(this).val();
+        localStorage.setItem('pid', id);
+        getProvinces(id);
+    });
+</script>
