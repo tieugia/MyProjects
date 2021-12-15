@@ -1,0 +1,34 @@
+﻿@model List<WebApp.Models.Result>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="_Show" model="@Model" />
+<div class="text-center">
+    <button class="btn btn-primary" id="btn">Load More</button>
+</div>
+<script src="~/js/js.js"></script>
+<script>
+    var patterns = null;
+    $.post('/home/getpatterns', (d) => {
+        patterns = d;
+        console.log(patterns);
+    });
+    var p = 1;
+    var opt = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    var formater = new Intl.DateTimeFormat('vi-VN', opt);
+    $('#btn').click(() => {
+        p++;
+        $.post(`/home/getresults/${p}`, (d) => {
+            console.log(d);
+            for (var i in d) {
+                var o = d[i];
+                $(sheet).append(`<div class="card">
+        <div class="card-header">
+            <h2 class="card-title"><a href="/">${o['provinceName']} - ${formater.format(new Date(o['date'])}</a></h2>
+        <div class="card-body">${patterns[o['patternId']-1]['show'].format(o['numbers'])}</div>
+        </div>`);
+            }
+        });
+        if (p>=@ViewBag.n) {
+            $(btn).hide();
+        }
+    });
+</script>

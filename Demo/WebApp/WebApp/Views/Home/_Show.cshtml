@@ -1,0 +1,14 @@
+﻿@model List<WebApp.Models.Result>
+<div id="sheet">
+    @foreach (WebApp.Models.Result item in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><a href="/">@item.ProvinceName - @item.Date.ToString("dd/MM/yyyy")</a></h2>
+            </div>
+            <div class="card-body">
+                @Html.Raw(string.Format(ViewBag.patterns[item.PatternId - 1].Show, item.Numbers))
+            </div>
+        </div>
+    }
+</div>

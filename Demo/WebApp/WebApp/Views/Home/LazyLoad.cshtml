@@ -1,0 +1,38 @@
+﻿@model List<WebApp.Models.Result>
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="_Show" model="@Model" />
+<script src="~/js/js.js"></script>
+@*1h2m*@
+@*<script>
+        $(window).scroll(function () {
+            console.log('Scroll top', $(this).scrollTop());
+            console.log('Window Height', $(this).height());
+            console.log('Document Height', $(document).height());
+        });
+    </script>*@
+<script>
+    var patterns = null;
+    $.post('/home/getpatterns', (d) => {
+        patterns = d;
+    });
+    var p = 1;
+    var opt = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    var formater = new Intl.DateTimeFormat('vi-VN', opt);
+    $(window).scroll(function () {
+        if ($(this).scrollTop() + $(this).height() + 1 >= $(document).height()) {
+            p++;
+            $.post(`/home/getresults/${p}`, (d) => {
+                console.log(d);
+                for (var i in d) {
+                    var o = d[i];
+                    $(sheet).append(`<div class="card">
+        <div class="card-header">
+        <h2 class="card-title"><a href="/">
+        ${o['provinceName']} - ${formater.format(new Date(o['date']))} - ${o['patternId']}</a></h2>
+        <div class="card-body">${patterns[o['patternId'] - 1]['show'].format(o['numbers'])}</div>
+        </div>`);
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,21 @@
+﻿@model List<WebApp.Models.Number>
+    <a class="btn btn-primary" href="number/create">Create</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (WebApp.Models.Number item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.PrizeId</td>
+                    @*<td>@item.ProvinceId</td>*@
+                    <td>@item.Value</td>
+                    @*<td>@item.Date</td>*@
+                </tr>
+            }
+        </tbody>
+    </table>

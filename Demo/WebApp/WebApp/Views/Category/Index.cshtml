@@ -1,0 +1,30 @@
+﻿@model List<WebApp.Models.Category>
+    <a class="btn btn-primary" href="/category/create">Create</a>
+@TempData["msg"]
+<h2>Manage Category</h2>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (WebApp.Models.Category item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td><a href="/category/edit/@item.Id"><i class="fas fa-pen"></i></a></td>
+                <td><a class="d" href="/category/delete/@item.Id"><i class="fas fa-trash"></i></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $('.d').click(()=> {
+        return confirm('Are you sure to delete?')
+    });
+</script>

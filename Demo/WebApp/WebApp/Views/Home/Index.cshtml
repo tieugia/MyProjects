@@ -1,0 +1,11 @@
+﻿@model List<WebApp.Models.Result>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@*<p>Total: @ViewBag.count</p>*@
+<p>Total: @ViewBag.n</p>
+<partial name="_Show" model="@Model" />
+<ul class="pagination">
+    @for (int i = 1; i <= ViewBag.n; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/home/index/@i">@i</a></li>
+    }
+</ul>

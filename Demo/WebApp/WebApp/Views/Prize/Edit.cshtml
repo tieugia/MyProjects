@@ -1,0 +1,11 @@
+﻿@model WebApp.Models.Prize
+<form method="post">
+    <div>
+        <label>Prize</label>
+        @*<input type="hidden" value="@Model.Id" />*@
+        <input type="text" name="name" value="@Model.Name" />
+    </div>
+    <div>
+        <button>Save Changes</button>
+    </div>
+</form>

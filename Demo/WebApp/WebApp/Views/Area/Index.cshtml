@@ -1,0 +1,27 @@
+﻿@model List<WebApp.Models.Area>
+    @*<a href="area/create" class="btn btn-primary">Create</a>*@
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (WebApp.Models.Area item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a href="/area/edit"><i class="fas fa-pen"></i></a>
+                </td>
+                <td>
+                    <a href="/area/delete"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
