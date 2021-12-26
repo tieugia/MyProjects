@@ -8,27 +8,32 @@ namespace WebApp.Controllers
     [ServiceFilter(typeof(AccessFilter))]
     public class HomeController : Controller
     {
-        ProvinceRepository province;
-        DistrictRepository district;
-        WardRepository ward;
+        //ProvinceRepository province;
+        //DistrictRepository district;
+        //WardRepository ward;
+        //public HomeController(IConfiguration configuration)
+        //{
+        //    province = new ProvinceRepository(configuration);
+        //    district = new DistrictRepository(configuration);
+        //    ward = new WardRepository(configuration);
+        //}
+        SiteProvider provider;
         public HomeController(IConfiguration configuration)
         {
-            province = new ProvinceRepository(configuration);
-            district = new DistrictRepository(configuration);
-            ward = new WardRepository(configuration);
+            provider = new SiteProvider(configuration);
         }
         public IActionResult Index()
         {
-            ViewBag.provinces = new SelectList(province.GetProvinces(), "ProvinceId", "ProvinceName");
+            ViewBag.provinces = new SelectList(provider.Province.GetProvinces(), "ProvinceId", "ProvinceName");
             return View();
         }
         public IActionResult Districts(string id)
         {
-            return Json(district.GetDistricts(id));
+            return Json(provider.District.GetDistricts(id));
         }
         public IActionResult Wards(string id)
         {
-            return Json(ward.GetWards(id));
+            return Json(provider.Ward.GetWards(id));
         }
     }
 }

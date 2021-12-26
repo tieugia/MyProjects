@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SalesRestaurant>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<div id="chart_div" style="width: 700px; height: 500px;"></div>
+<script>
+    google.charts.load('current', {
+      callback: drawChart,
+      packages:['corechart']
+    });
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'x');
+      data.addColumn('number', 'y0');
+      data.addRows([
+        @foreach (var item in Model)
+        {
+            @Html.Raw($"[{item.Quantity},{item.Sales}],")
+        }
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1, {
+        label: 'y1=x',
+        type: 'number',
+        calc: function (dt, row) {
+          return @ViewBag.intercept + @ViewBag.slope * dt.getValue(row, 0);
+        }
+      }]);
+
+      var options = {
+        seriesType: 'scatter',
+        series: {
+          1: {
+            type: 'line'
+          }
+        }
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+      chart.draw(view, options);
+    }
+</script>

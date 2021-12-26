@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6add57e0-fb14-4326-8ed5-6e836b11e3e7": {
+      "ProjectGuid": "6add57e0-fb14-4326-8ed5-6e836b11e3e7",
+      "DisplayName": "WebApi",
+      "ColorIndex": 0
+    },
+    "cd60e4a4-1b68-4234-8066-0a274bd43efc": {
+      "ProjectGuid": "cd60e4a4-1b68-4234-8066-0a274bd43efc",
+      "DisplayName": "WebClient",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

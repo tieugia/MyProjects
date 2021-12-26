@@ -1,0 +1,6 @@
+﻿<ul>
+    @foreach (Category item in ViewBag.categories)
+    {
+        <li><a href="@item.Id">@item.Name</a></li>
+    }
+</ul>

@@ -151,3 +151,75 @@ Create table Pdf(
 	Size bigint not null
 )
 GO
+--drop proc StatisticDistricts
+go
+CREATE PROC StatisticDistricts
+AS
+SELECT TOP 10 ProvinceName AS Name, COUNT(*) AS Total FROM District
+JOIN Province ON Province.ProvinceId = District.ProvinceId
+GROUP BY Province.ProvinceId, ProvinceName
+GO
+CREATE TABLE SalesRestaurant(
+	Quantity INT NOT NULL,
+	Sales INT NOT NULL
+);
+GO
+INSERT INTO SalesRestaurant (Quantity, Sales) VALUES
+(2,58),
+(6,105),
+(8,118),
+(12,117),
+(8,88),
+(16,137),
+(20,157),
+(20,169),
+(22,149),
+(26,202);
+GO
+--DROP PROC GetSalesRestaurants
+GO
+CREATE PROC GetSalesRestaurants(
+	@Slope FLOAT OUT,
+	@Intercept FLOAT OUT
+)
+AS
+BEGIN
+	SELECT * FROM SalesRestaurant
+	DECLARE @XBar FLOAT, @YBar FLOAT
+	SELECT @XBar = AVG(Quantity), @YBar = AVG(Sales) FROM SalesRestaurant
+	SELECT @Slope = SUM((Quantity - @XBar) * (Sales - @YBar)) / SUM(POWER(Quantity - @XBar, 2)) FROM SalesRestaurant
+	SET @Intercept = @YBar - @Slope * @XBar
+END
+GO
+CREATE TABLE SalesRecord(
+	Region VARCHAR(64),
+	Country VARCHAR(64),
+	ItemType VARCHAR(32),	
+	SalesChannel VARCHAR(16),
+	OrderPriority VARCHAR(4),
+	OrderDate DATE,
+	OrderID INT,
+	ShipDate DATE,
+	UnitsSold DECIMAL(10, 2),
+	UnitPrice DECIMAL(10, 2),
+	UnitCost DECIMAL(10, 2),
+	TotalRevenue DECIMAL(10, 2),
+	TotalCost DECIMAL(10, 2),
+	TotalProfit DECIMAL(10, 2)
+);
+GO
+BULK INSERT SalesRecord
+FROM 'D:\MyProjects\Demo\WebAppVietnam\Script\100 Sales Records.csv'
+WITH
+(
+	FIRSTROW = 2, -- as 1st one is header
+	FIELDTERMINATOR = ',', -- CSV field delimiter
+	ROWTERMINATOR = '\n',  -- Use to shift the control to next row
+	MAXERRORS = 20000
+);
+GO
+CREATE PROC StatisticSalesRecord
+AS
+	SELECT YEAR(ShipDate) AS [Year], SUM(TotalRevenue) AS Revenue, SUM(TotalCost) AS Expense, SUM(TotalProfit) AS Profit
+	FROM SalesRecord GROUP BY YEAR(ShipDate)
+GO

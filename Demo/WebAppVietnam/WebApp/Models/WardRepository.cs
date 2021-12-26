@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
-    public class WardRepository
+    public class WardRepository : BaseRepository
     {
-        string connectionString;
-        public WardRepository(IConfiguration configuration)
-        {
-            connectionString = configuration.GetConnectionString("Vietnam");
-        }
+        //string connectionString;
+        //public WardRepository(IConfiguration configuration)
+        //{
+        //    connectionString = configuration.GetConnectionString("Vietnam");
+        //}
+        public WardRepository(IDbConnection connection) : base(connection) { }
         public IEnumerable<Ward> GetWards(string id)
         {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                return connection.Query<Ward>("SELECT * FROM Ward WHERE DistrictId = @Id", new { Id = id });
-            }
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
+            return connection.Query<Ward>("SELECT * FROM Ward WHERE DistrictId = @Id", new { Id = id });
+            //}
         }
     }
 }

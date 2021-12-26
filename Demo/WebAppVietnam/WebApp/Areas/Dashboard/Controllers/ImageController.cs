@@ -81,12 +81,12 @@ namespace WebApp.Area.Dashboard.Controllers
             }
             return View();
         }
-        public IActionResult UploadMultiple()
+        public IActionResult Multiple()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult UploadMultiple(IFormFile[] af)
+        public IActionResult Multiple(IFormFile[] af)
         {
             if (af != null)
             {

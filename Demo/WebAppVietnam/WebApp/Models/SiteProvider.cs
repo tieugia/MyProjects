@@ -23,6 +23,66 @@ namespace WebApp.Models
         MemberInRoleRepository memberInRole;
         ImageRepository image;
         PdfRepository pdf;
+        DistrictRepository district;
+        ProvinceRepository province;
+        WardRepository ward;
+        SalesRepository sales;
+        SalesRecordRepository salesRecord;
+        public SalesRecordRepository SalesRecord
+        {
+            get
+            {
+                if (salesRecord is null)
+                {
+                    salesRecord = new SalesRecordRepository(connection);
+                }
+                return salesRecord;
+            }
+        }
+        public SalesRepository Sales
+        {
+            get
+            {
+                if (sales is null)
+                {
+                    sales = new SalesRepository(connection);
+                }
+                return sales;
+            }
+        }
+        public WardRepository Ward
+        {
+            get
+            {
+                if (ward is null)
+                {
+                    ward = new WardRepository(connection);
+                }
+                return ward;
+            }
+        }
+        public ProvinceRepository Province
+        {
+            get
+            {
+                if (province is null)
+                {
+                    province = new ProvinceRepository(connection);
+                }
+                return province;
+            }
+        }
+        public DistrictRepository District
+        {
+            get
+            {
+                if (district is null)
+                {
+                    district = new DistrictRepository(connection);
+                }
+                return district;
+            }
+        }
         public PdfRepository Pdf
         {
             get

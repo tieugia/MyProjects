@@ -8,137 +8,153 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApp
 build_property.RootNamespace = WebApp
-build_property.ProjectDir = E:\WebAppVietnam\WebApp\
+build_property.ProjectDir = D:\MyProjects\Demo\WebAppVietnam\WebApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\WebAppVietnam\WebApp
+build_property.MSBuildProjectDirectory = D:\MyProjects\Demo\WebAppVietnam\WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Access/Create.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Access/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEFjY2Vzc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Access/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Access/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEFjY2Vzc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Home/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Chart/Bar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXENoYXJ0XEJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Chart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXENoYXJ0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Chart/Pie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXENoYXJ0XFBpZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Chart/Regression.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXENoYXJ0XFJlZ3Jlc3Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/ClipBoard.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/ClipBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXENsaXBCb2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Create.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/DragAndDrop.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/DragAndDrop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXERyYWdBbmREcm9wLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Folder.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Folder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXEZvbGRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Multiple.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Multiple.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXE11bHRpcGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Webcam.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/Webcam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXFdlYmNhbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/WebUrl.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Image/WebUrl.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEltYWdlXFdlYlVybC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Member/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXE1lbWJlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Member/Roles.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Member/Roles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXE1lbWJlclxSb2xlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Pdf/Create.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Pdf/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFBkZlxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Pdf/Detail.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Pdf/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFBkZlxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Pdf/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Pdf/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFBkZlxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Role/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Role/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFJvbGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/Shared/_Layout.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/Dashboard/Views/_ViewStart.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/Dashboard/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Areas/_ViewImports.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Areas/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Denied.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Denied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Forgot.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Forgot.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxGb3Jnb3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Login.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Recovery.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Recovery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWNvdmVyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Register.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Auth/Success.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Auth/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxTdWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Home/Index.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Shared/_Layout.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/Shared/_LayoutAuth.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/Shared/_LayoutAuth.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBdXRoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/_ViewImports.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WebAppVietnam/WebApp/Views/_ViewStart.cshtml]
+[D:/MyProjects/Demo/WebAppVietnam/WebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
